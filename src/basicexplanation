@@ -1,0 +1,256 @@
+e2e==end to end tests for application,these are basically automated tests that simulate the user
+we can write code to launch the browser,navigate to home page click a few links,and setting something is there in
+page.
+
+
+NODE:==store all 3rd part libraries application depends on,for purely for development
+when we compile application 3rd party libraries put into a bundle and deployed it into 
+a application,we cant deploy
+node module on to the server
+
+Src ===actual source code
+   app== module and component==every application has atlst 1 module and 1 component
+   
+   assets==static assets like images,text files
+  
+  environment==configuration settings for diff environments
+     one is for production environment and the other for development
+     
+  favicon===favourate icon which is displayed in the browser
+
+  index.html==dynamic js,stylesheets are inserted into this page
+  
+  main.ts===this is like main and it is the starting of our application
+     here we are doing bootstraping the main module(AppModule) of our application 
+     
+  polyfills.ts===imports some scripts that are required for running angular
+  				because angular framework uses features of javascript that are not available in
+  				the current version of javascript supported by most browsers after
+  				
+  			==it fills the gaps of javascript features and angular needs and features supported 
+  			by the current browsers
+  			
+	styles.css===this adds the global styles for our appln.
+	test.ts==used for the setting up testing environment.
+	
+karma.conf.js=====configurationfile===testrunner for javascript code
+			devdependencies===these libaries needed for development oor in development machine not to run(production server)
+			
+protractor.conf.js===tool for end to end test of running 
+
+tsconfig.json======bunch of settings for typescript compiler,this typescript compiler based on settings converts typescript
+               into javascript as browsers can understand.
+               
+tslint.json===static analysis tool for typescript code,checks typescript code for readabilty,maintainbility and for functional errors.
+
+
+
+
+						TYPESCRIPT
+						==========
+						
+it is superset of javascript,every javascript is a typescript but typscript is having additional features
+that are not there in current version of javascript and supported by the browsers
+
+we need to compile type script into javascript for browser understandability.this is part of building our appln.
+
+in typescript:
+==============
+strong typing(no need of datatype when we declare something)==application more predictable,easy debug
+object oriented features
+we can catch errors at compile time mostly before deployment
+great tooling(code editors)
+
+Features of typescript that are not in javascript:
+==================================================
+ES5(ECMAScript 5):suppoted by all browsers
+ES6(2015)==having let keyword
+ES2016
+ES2017
+
+different types of typescript:
+===============================
+use let instead of var,it show the compile time errors(because scope is only the nearby block
+not method) still it generates javascript with es5 var is there in js file.
+
+1)let count=5;
+  count='a';     ==assigning 1 type of variale into other on the fly is possible in js
+               ==but in typescript compile error
+               
+               
+               
+    let a:number;
+    let b:boolean;
+    let c:string;
+    let d:any;
+    let e:number[]=[1,2,3];
+    let f:any[]=[1,true,'a',false];
+    
+    const ColorRed=0;
+    const ColorGreen=1;
+    const ColorBlue=2;
+    
+     enum Color {Red,Green,Blue};
+    //enum Color {Red=0,Green=1,Blue=2};
+    let backgroundColor=Color.Red;
+    
+    Type Associations in typescript:
+    ================================
+    let message;
+	message='abc';
+	//2 types of type assertions
+	let endsWithC =(<string>message).endsWith('c');
+	let altway=(message as string).endsWith('c');
+	
+	Concept of Arrow functions:
+	============================
+	//Arrow functions in typescript
+	/* 
+	in js
+	let log=function(message){
+		console.log(message);
+	} */
+	
+	//in typescript
+	let doLog=(message)=>console.log(message);
+	
+	let doLog=()=>console.log();
+	
+		
+	//Custom Functions
+	=====================
+	let drawPoint=(point:{x:number,y:number})=>{
+		//..
+	}//this is example for inline annotations
+	drawPoint({x:1,y:2})
+	
+	//but some verbose problems with this approach and there is a chance of multiple point
+	//functions.solution to this is interfaces
+	
+	//interfaces
+	interface Point{
+		x:number,
+		y:number
+	}
+	
+	let drawPoint=(point:Point)=>{
+		//..
+	}
+	drawPoint({x:1,y:2})===but this approach voilates the cohesion(all related fields and methods 
+	in one place)
+	
+	class
+	=====
+	class Point{
+		x:number;
+		y:number;
+		
+	draw(){
+		//..
+	}
+	getDistance(another:Point)
+	{
+		//..
+	}
+	}
+	//we create object for point class and call methods
+	
+constructor(x:number,y:number){
+this.x=x;
+this.y=y;
+}
+x?:number,y?:number==making parameters as optional
+if we make one parameter as optional all the parans right to that are
+also optional(rule of typescript)
+
+access specifiers:
+==================
+
+class Point{
+private x:number;
+private y:number;
+draw(){}
+}
+//default is public
+
+class Point{
+constructor(private x?:number,public y:number){==we cant accesss  these outside
+}
+}
+
+properties:
+===========
+set,get====readonly access outside for private variables  
+camel notation
+
+private _x:number;
+private _y:number;
+constructor(private _x?:number,public _y:number){==we cant accesss  these outside
+}
+get _x(){return this._x;}
+
+set x(value){
+  if(value<0) throw new Error('ddf');
+  this._x=value;
+}
+
+Modules:
+========
+each file is like a module
+we can import in tnro other as below
+file  export  classes,functions,variables etc
+import {point} from './point';
+================================================================================================================
+
+Building blocks of Angular apps:
+================================
+Components===data,html template,logic for a view
+
+Module====
+
+creating components==
+  ==creating component,
+  ==register it in a module
+  ==add an element in an html markup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
